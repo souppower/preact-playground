@@ -13,25 +13,11 @@
     import htm from 'https://unpkg.com/htm?module';
     // import htm from 'https://unpkg.com/htm@latest/dist/htm.module.js?module';
     import {h, render} from 'https://unpkg.com/preact@latest?module';
-    import {useState, useEffect} from 'https://unpkg.com/preact@latest/hooks/dist/hooks.module.js?module';
 
     // Initialize htm with Preact
     const html = htm.bind(h);
 
-    function Counter() {
-        const [count, setCount] = useState(0);
-        return (
-            html`
-                <div>
-                    ${count}
-                    <br />
-                    <button onclick=${() => setCount(count + 1)}>increment</button>
-                    <button onclick=${() => setCount(count - 1)}>decrement</button>
-                </div>
-            `
-        )
-    }
-
+    import {Counter} from "./Counter.js";
     function App(props) {
         return html`<h1>Hello ${props.name}!</h1>
         <${Counter}/>`;
@@ -40,5 +26,6 @@
     render(html`
         <${App} name="World"/>`, document.body);
 </script>
+<script src="./Counter.js" type="module"></script>
 </body>
 </html>
